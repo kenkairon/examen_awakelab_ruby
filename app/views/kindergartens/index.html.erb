@@ -1,0 +1,68 @@
+<p style="color: green"><%= notice %></p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item alert alert-primary">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="bi bi-house-door-fill"></i> H o m e </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><h5 class="alert alert-success">Bienvenido <%= current_user.email %>! <i class="bi bi-balloon-heart"></i></h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><p class="alert alert-info"><i class="bi bi-person-bounding-box"></i> Usuario : <%= current_user.email %></p></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%= form_for(current_user, url: destroy_user_session_path, method: :delete) do |f| %>
+        <%= f.submit "Cerrar sesión", class: "btn btn-danger" %>
+      <% end %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<%= link_to "Publicar Guardería", new_kindergarten_path, class: "btn btn-primary mt-3 mb-2" %>
+<h1>Kindergartens</h1>
+<div id="kindergartens"class="row col-md-12">
+  <% @kindergartens.each do |kindergarten| %>
+      <%= render kindergarten %>
+    <p>
+      <%= link_to "Mostrar Guardería", kindergarten %>
+    </p>
+  <% end %>
+</div>
+<%= paginate @kindergartens %>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Nuesto Objetivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenido del modal -->
+        <h5 class="alert alert-warning">Las mejores vacaciones para tus mascotas
+En El Patio Guardería queremos que tanto tú como tu mascota puedan estar tranquilos en sus vacaciones. 
+Cuidamos a tus mascotas como si fueran nuestras y las atendemos con instalaciones y productos de la mejor calidad.</h5>
+      <img src="https://www.animalesbog.gov.co/sites/default/files/styles/400_x_180_px/public/noticias/imagenes/PPHH1.png?itok=bHUdliCO" alt="Imagen de ejemplo">
+      <button type="button" class="btn btn-outline-primary">Contacto : 979347247</button>
+      <button type="button" class="btn btn-outline-success">Correo : kenya.nicolas@stroman.name</button
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

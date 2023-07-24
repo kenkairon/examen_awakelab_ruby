@@ -1,0 +1,40 @@
+<div class="container">
+  <table class="table table-striped table-hover" id="#example">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description:</th>
+        <th scope="col">Price:</th>
+        <th scope="col">Phone:</th>
+        <th scope="col">Email:</th>
+        <th scope="col">City:</th>
+        <th scope="col">Imagen:</th>
+        <th scope="col">Pets</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= kindergarten.name %></td>
+        <td><%= kindergarten.description %></td>
+        <td><%= kindergarten.price %></td>
+        <td><%= kindergarten.phone %></td>
+        <td><%= kindergarten.email %></td>
+        <td><%= kindergarten.city.name %></td>
+        <td>
+            <% if kindergarten && kindergarten.photo.present? %>
+                <%= image_tag kindergarten.photo, class: "img-fluid", style: "max-width: 300px; max-height: 200px; margin-bottom: 10px;" %>
+            <% else %>
+                <span>No se encontró la foto</span>
+            <% end %>
+        </td>
+        <td>
+          <% kindergarten.pets.each do |pet| %>
+            <div><%= pet.name %></div>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    

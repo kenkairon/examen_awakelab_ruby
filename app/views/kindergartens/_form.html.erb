@@ -1,0 +1,57 @@
+<%= form_with(model: kindergarten) do |form| %>
+  <% if kindergarten.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(kindergarten.errors.count, "error") %> prohibited this kindergarten from being saved:</h2>
+
+      <ul>
+        <% kindergarten.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row-container">
+    <div class="col-md-10">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="col-md-10">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <div class="col-md-10">
+      <%= form.label :photo, class: "form-label" %>
+      <%= form.file_field :photo, class: "form-control" %><br>
+    </div>
+    <div class="col-md-10">
+      <%= form.label :pet_ids, class: "form-label" %>
+      <%= form.collection_check_boxes :pet_ids, Pet.all, :id, :name, class: "form-check-input" %>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+          <%= form.label :city_id, class: "form-label" %>
+          <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "Select City" }, class: "form-select w-100" %>
+        </div>
+        <div class="col-md-5">
+          <%= form.label :price, class: "form-label" %>
+          <%= form.text_field :price, class: "form-control" %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+          <%= form.label :phone, class: "form-label" %>
+          <%= form.number_field :phone, class: "form-control" %>
+        </div>
+        <div class="col-md-5">
+          <%= form.label :email, class: "form-label" %>
+          <%= form.text_field :email, class: "form-control" %>
+        </div>
+    </div>
+  
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <hr>
+    <div class="col-10">
+      <%= form.submit "Submit", class: "btn btn-primary col-md-12" %>
+    </div>
+  <% end %>
+</div>

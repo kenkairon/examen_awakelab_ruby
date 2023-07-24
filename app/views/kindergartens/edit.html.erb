@@ -1,0 +1,13 @@
+<div class="container col-xl-10">
+  <h2>Editar Guardería</h2>
+</div>
+
+<%= render "form", kindergarten: @kindergarten %>
+
+<br>
+
+<div class="col-xl-10 container">
+  <%= link_to "Mostrar Guardería", @kindergarten, class: "btn btn-primary" %> |
+  <%= link_to "Volver a Guardería", kindergartens_path, class: "btn btn-success" %>
+
+</div>
